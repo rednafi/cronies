@@ -1,4 +1,4 @@
-name: Greeting on variable day
+name: Set global constants
 
 on:
   workflow_dispatch

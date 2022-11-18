@@ -20,11 +20,11 @@ env:
   TIMEOUT: 10
 
 jobs:
-  install-deps:
-    uses: rednafi/cronies/.github/workflows/constants.yml@main
+  set-constants:
+    uses: rednafi/cronies/.github/workflows/set-constants.yml@main
 
   purge-forks:
-    needs: ["install-deps"]
+    needs: [""]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
