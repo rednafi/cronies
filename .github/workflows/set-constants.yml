@@ -8,7 +8,7 @@ env:
 
 jobs:
   echo:
-  runs-on: ubuntu-latest
-  steps:
-    - run: |
-        echo "Using Python $PYTHON_VERSION"
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Using Python $PYTHON_VERSION"
