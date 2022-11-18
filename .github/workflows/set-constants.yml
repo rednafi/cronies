@@ -10,7 +10,12 @@ env:
 jobs:
   set-envvars:
     runs-on: ubuntu-latest
+
+    outputs:
+      output1: ${{ steps.step1.outputs.PYTHON_VERSION }}
+      output2: ${{ steps.step2.outputs.GITHUB_OUTPUT }}
+
     steps:
       - run: |
-          echo "PYTHON_VERSION=$PYTHON_VERSION" >> $GITHUB_ENV
-          echo "PIP_CACHE_ID=$PIP_CACHE_ID" >> $GITHUB_ENV
+          echo "PYTHON_VERSION=$PYTHON_VERSION" >> $GITHUB_OUTPUT
+          echo "PIP_CACHE_ID=$PIP_CACHE_ID" >> $GITHUB_OUTPUT

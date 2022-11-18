@@ -27,7 +27,11 @@ jobs:
     uses: rednafi/cronies/.github/workflows/set-constants.yml@main
 
   purge-forks:
-    needs: ["set-constants"]
+    needs: "set-constants"
+    env:
+      PYTHON_VERSION: ${{ needs.set-constants.outputs.PYTHON_VERSION }}
+      PIP_CACHE_ID: ${{ needs.set-constants.outputs.PIP_CACHE_ID }}
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
