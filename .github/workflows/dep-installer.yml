@@ -4,6 +4,9 @@ name: Install Python dependencies
 on:
   workflow_call:
 
+env:
+  PYTHON_VERSION: "3.11"
+
 jobs:
   install-deps:
     runs-on: ubuntu-latest
@@ -11,9 +14,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-python@v4
-        id: cp311
+        id: cp-${{ env.PYTHON_VERSION }}
         with:
-          python-version: "3.11"
+          python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
           cache-dependency-path: |
             **/requirements*.txt
@@ -24,4 +27,9 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
-          which black
+
+      - name: Upload pip cache
+        uses: actions/upload-artifact@v3
+        with:
+          name: pip-cache
+          path: /opt/hostedtoolcache/Python/
