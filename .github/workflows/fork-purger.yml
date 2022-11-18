@@ -31,13 +31,12 @@ jobs:
       - uses: actions/setup-python@v4
         id: cp311
         with:
-          python-version: "3.11"
+          python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
           cache-dependency-path: |
             **/requirements*.txt
       - run: |
           echo "Cache hit: ${{ steps.cp311.outputs.cache-hit }}"
-          echo "$PYTHON_VERSION"
 
       - name: Install the dependencies
         run: |

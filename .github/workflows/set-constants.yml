@@ -5,10 +5,12 @@ on:
 
 env:
   PYTHON_VERSION: "3.11"
+  PIP_CACHE_ID: "cp311"
 
 jobs:
-  echo:
+  set-envvars:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "Using Python $PYTHON_VERSION"
+          echo "PYTHON_VERSION=$PYTHON_VERSION" >> $GITHUB_ENV
+          echo "PIP_CACHE_ID=$PIP_CACHE_ID" >> $GITHUB_ENV
