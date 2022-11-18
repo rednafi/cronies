@@ -24,7 +24,7 @@ jobs:
     uses: rednafi/cronies/.github/workflows/set-constants.yml@main
 
   purge-forks:
-    needs: [""]
+    needs: ["set-constants"]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
