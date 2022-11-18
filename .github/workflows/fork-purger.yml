@@ -27,6 +27,9 @@ jobs:
     needs: ["install-deps"]
     runs-on: ubuntu-latest
     steps:
+      steps:
+      - uses: actions/checkout@v3
+
       - name: Check linter
         run: |
           echo "Checking linter conformity..."
