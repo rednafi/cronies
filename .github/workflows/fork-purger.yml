@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install Python dependencies
-        uses: install-python-deps
+        uses: rednafi/cronies/.github/workflows/dep-installer.yml@main
 
       - name: Check linter
         run: |
