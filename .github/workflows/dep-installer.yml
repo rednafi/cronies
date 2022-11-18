@@ -4,11 +4,11 @@ name: Install Python dependencies
 on:
   workflow_call:
 
-env:
-  PYTHON_VERSION: "3.11"
-  PIP_CACHE_ID: "cp-311"
-
 jobs:
+  env:
+    PYTHON_VERSION: "3.11"
+    PIP_CACHE_ID: "cp-311"
+
   install-deps:
     runs-on: ubuntu-latest
     steps:
