@@ -12,10 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      output1: ${{ steps.step1.outputs.PYTHON_VERSION }}
-      output2: ${{ steps.step2.outputs.GITHUB_OUTPUT }}
+      PYTHON_VERSION: ${{ steps.step1.outputs.PYTHON_VERSION }}
+      PIP_CACHE_ID: ${{ steps.step2.outputs.PIP_CACHE_ID }}
 
     steps:
-      - run: |
-          echo "PYTHON_VERSION=$PYTHON_VERSION" >> $GITHUB_OUTPUT
-          echo "PIP_CACHE_ID=$PIP_CACHE_ID" >> $GITHUB_OUTPUT
+      - id: step1
+        run: echo "PYTHON_VERSION=$PYTHON_VERSION" >> $GITHUB_OUTPUT
+
+      - id: step2
+        run: echo "PIP_CACHE_ID=$PIP_CACHE_ID" >> $GITHUB_OUTPUT
