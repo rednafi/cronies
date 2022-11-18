@@ -26,9 +26,3 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
           which black
-
-      # - name: Upload pip cache
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: pip-cache
-      #     path: /opt/hostedtoolcache/Python/3.11.0/pip-cache
