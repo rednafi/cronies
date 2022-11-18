@@ -8,5 +8,6 @@ env:
 
 jobs:
   echo:
-    run: |
-      echo "Using Python $PYTHON_VERSION"
+    steps:
+      run: |
+        echo "Using Python $PYTHON_VERSION"
