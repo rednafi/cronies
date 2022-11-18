@@ -21,7 +21,7 @@ env:
 
 jobs:
   install-deps:
-    uses: rednafi/cronies/.github/workflows/constant.yml@main
+    uses: rednafi/cronies/.github/workflows/constants.yml@main
 
   purge-forks:
     needs: ["install-deps"]
