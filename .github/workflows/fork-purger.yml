@@ -38,6 +38,15 @@ jobs:
       - run: |
           echo "Cache hit: ${{ steps.cp311.outputs.cache-hit }}"
 
+      - name: Download pip-cache
+        uses: actions/download-artifact@v3
+        with:
+          pip-cache
+
+      - name: Uncompress pip-cache
+        run: |
+           tar -xvzf pip-cache.tar.gz -C /opt/hostedtoolcache/Python/3.11.0/64x
+
       - name: Check linter
         run: |
           echo "Checking linter conformity..."

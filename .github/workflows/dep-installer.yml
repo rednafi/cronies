@@ -25,4 +25,13 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt -r requirements-dev.txt
-          which black
+
+      - name: Compress pip-cache
+        run:
+          tar -zcvf pip-cache.tar.gz /opt/hostedtoolcache/Python/3.11.0/64x
+
+      - name: Upload pip-cache
+        uses: actions/upload-artifact@v3
+        with:
+          name: pip-cache
+          path: pip-cache.tar.gz
