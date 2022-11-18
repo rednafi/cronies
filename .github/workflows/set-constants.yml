@@ -1,7 +1,7 @@
 name: Set global constants
 
 on:
-  workflow_dispatch
+  workflow_call
 
 env:
   PYTHON_VERSION: "3.11"
