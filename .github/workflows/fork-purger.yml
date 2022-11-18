@@ -36,7 +36,7 @@ jobs:
       - uses: actions/setup-python@v4
         id: ${{ env.PIP_CACHE_ID }}
         with:
-          python-version: ${{ env.PYTHON_VERSIONS }}
+          python-version: $PYTHON_VERSIONS
           cache: "pip"
           cache-dependency-path: |
             **/requirements*.txt
