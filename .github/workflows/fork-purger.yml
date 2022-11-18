@@ -17,37 +17,32 @@ concurrency:
 
 
 env:
+  # Globally set in the repo settings.
   GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provided by GitHub Actions.
+
+  # Local env vars.
+  PYTHON_VERSION: "3.11"
+  PIP_CACHE_ID: "cp311"
   GITHUB_USERNAME: rednafi
   TIMEOUT: 10
 
 
 jobs:
-  set-constants:
-    uses: rednafi/cronies/.github/workflows/set-constants.yml@main
-
   purge-forks:
-    needs: "set-constants"
-    env:
-      PYTHON_VERSION: ${{ needs.set-constants.outputs.PYTHON_VERSION }}
-      PIP_CACHE_ID: ${{ needs.set-constants.outputs.PIP_CACHE_ID }}
-
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-python@v4
-        id: cp311
+        id: ${{ env.PIP_CACHE_ID }}
         with:
-          python-version: "3.11"
+          python-version: ${{ env.PYTHON_VERSIONS }}
           cache: "pip"
           cache-dependency-path: |
             **/requirements*.txt
 
       - run: |
           echo "Cache hit: ${{ steps.cp311.outputs.cache-hit }}"
-          echo "Python version $PYTHON_VERSION"
-          echo "Python version ${{ env.PYTHON_VERSION }}"
 
       - name: Install the dependencies
         run: |
