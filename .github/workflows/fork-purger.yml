@@ -18,11 +18,9 @@ concurrency:
 
 env:
   # Globally set in the repo settings.
-  GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provided by GitHub Actions.
+  GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Implicitly used by the script.
 
   # Local env vars.
-  PYTHON_VERSION: "3.11"
-  PIP_CACHE_ID: "cp311"
   GITHUB_USERNAME: rednafi
   TIMEOUT: 10
 
@@ -34,9 +32,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-python@v4
-        id: "${{ env.PIP_CACHE_ID }}"
+        id: ${{ secrets.PIP_CACHE_ID }} # Normal env doesn't propagate here, why!!!
         with:
-          python-version: "${{ env.PYTHON_VERSIONS }}"
+          python-version: ${{ secrets.PYTHON_VERSIONS }}
           cache: "pip"
           cache-dependency-path: |
             **/requirements*.txt
