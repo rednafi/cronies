@@ -14,8 +14,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  GITHUB_API_TOKEN: ${{secrets.GH_API_TOKEN}}
+  GITHUB_API_TOKEN: ${{secrets.GITHUB_TOKEN}} # Provided by GitHub Actions.
   GITHUB_USERNAME: rednafi
+  TIMEOUT: 10
 
 jobs:
   ci:
