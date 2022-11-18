@@ -25,4 +25,4 @@ to execute locally. See the instructions in the individual scripts.
     python -m scripts.<script_name>
     ```
 
-[1]: ./github/workflows/fork-purger.yml
+[1]: .github/workflows/fork-purger.yml
