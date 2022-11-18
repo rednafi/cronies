@@ -1,0 +1,50 @@
+name: Purge forks
+
+on:
+  push:
+
+  # Everyday at 0:37 UTC.
+  schedule:
+    - cron: "37 0 * * *"
+
+
+# Cancel any running workflow if the CI gets triggered again.
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+env:
+  GITHUB_API_TOKEN: ${{secrets.GITHUB_TOKEN}} # Provided by GitHub Actions.
+  GITHUB_USERNAME: rednafi
+  TIMEOUT: 10
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('**/requirements-dev.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install the dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-dev.txt
+
+      - name: Check linter
+        run: |
+          echo "Checking linter conformity..."
+          make lint-check
+
+      - name: Run the script
+        run: |
+          python -m scripts.fork_purger
