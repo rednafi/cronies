@@ -21,7 +21,7 @@ env:
 
 jobs:
   install-deps:
-    uses: rednafi/cronies/.github/workflows/dep-installer.yml@main
+    uses: rednafi/cronies/.github/workflows/constant.yml@main
 
   purge-forks:
     needs: ["install-deps"]
@@ -37,15 +37,12 @@ jobs:
             **/requirements*.txt
       - run: |
           echo "Cache hit: ${{ steps.cp311.outputs.cache-hit }}"
+          echo "$PYTHON_VERSION"
 
-      - name: Download pip-cache
-        uses: actions/download-artifact@v3
-        with:
-          name: pip-cache
-
-      - name: Uncompress pip-cache
+      - name: Install the dependencies
         run: |
-           tar -xvzf pip-cache.tar.gz -C $pythonLocation
+          pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-dev.txt
 
       - name: Check linter
         run: |
