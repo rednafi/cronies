@@ -5,3 +5,8 @@ on:
 
 env:
   PYTHON_VERSION: "3.11"
+
+jobs:
+  echo:
+    run: |
+      echo "Using Python $PYTHON_VERSION"
