@@ -19,6 +19,7 @@ concurrency:
 env:
   # Globally set in the repo settings.
   GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Implicitly used by the script.
+  PYTHON_VERSION: "3.11"
 
   # Local env vars.
   GITHUB_USERNAME: rednafi
@@ -34,7 +35,7 @@ jobs:
       - uses: actions/setup-python@v4
         id: cp311
         with:
-          python-version: ${{ secrets.PYTHON_VERSIONS }}
+          python-version: ${{ env.PYTHON_VERSION }}
           cache: "pip"
           cache-dependency-path: |
             **/requirements*.txt
