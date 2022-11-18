@@ -10,4 +10,4 @@ jobs:
   echo:
     steps:
       - run: |
-        echo "Using Python $PYTHON_VERSION"
+          echo "Using Python $PYTHON_VERSION"
