@@ -1,0 +1,7 @@
+name: Greeting on variable day
+
+on:
+  workflow_dispatch
+
+env:
+  PYTHON_VERSION: "3.11"
