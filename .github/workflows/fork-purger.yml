@@ -24,6 +24,7 @@ jobs:
     uses: rednafi/cronies/.github/workflows/dep-installer.yml@main
 
   purge-forks:
+    needs: ["install-deps"]
     runs-on: ubuntu-latest
     steps:
       - name: Check linter
