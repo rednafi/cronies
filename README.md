@@ -4,7 +4,7 @@ Bespoke cron jobs.
 
 ## Description
 
-* `fork-purger`: Purge forks that weren't updated in the last 60 days. Runs daily.
+* [`fork-purger`][1]: Purge forks that weren't updated in the last 60 days. Runs daily.
 
 ## Local development
 
@@ -20,7 +20,9 @@ To test the scripts locally:
     ```
 * Set the environment variables. This will vary depending on which script you're trying
 to execute locally. See the instructions in the individual scripts.
-* Run a cron script:
+* Run a cron script locally:
     ```
     python -m scripts.<script_name>
     ```
+
+[1]: ./github/workflows/fork-purger.yml
