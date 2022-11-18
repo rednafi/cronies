@@ -41,7 +41,7 @@ jobs:
       - name: Download pip-cache
         uses: actions/download-artifact@v3
         with:
-          pip-cache
+          name: pip-cache
 
       - name: Uncompress pip-cache
         run: |
