@@ -17,7 +17,8 @@ jobs:
           cache: "pip"
           cache-dependency-path: |
             **/requirements*.txt
-      - run: echo "Cache hit: ${{ steps.cp310.outputs.cache-hit }}"
+      - run: |
+          echo "Cache hit: ${{ steps.cp310.outputs.cache-hit }}"
 
       - name: Install the dependencies
         run: |
