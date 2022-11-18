@@ -30,4 +30,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: pip-cache
-          path: /opt/hostedtoolcache/Python/
+          path: /opt/hostedtoolcache/Python/3.11.0/
