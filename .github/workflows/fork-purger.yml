@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-python@v4
-        id: ${{ secrets.PIP_CACHE_ID }} # Normal env doesn't propagate here, why!!!
+        id: cp311
         with:
           python-version: ${{ secrets.PYTHON_VERSIONS }}
           cache: "pip"
