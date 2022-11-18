@@ -45,7 +45,7 @@ jobs:
 
       - name: Uncompress pip-cache
         run: |
-           tar -xvzf pip-cache.tar.gz -C /opt/hostedtoolcache/Python/3.11.0/64x
+           tar -xvzf pip-cache.tar.gz -C $pythonLocation
 
       - name: Check linter
         run: |
