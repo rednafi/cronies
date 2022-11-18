@@ -4,25 +4,27 @@ name: Install Python dependencies
 on:
   workflow_call:
 
-jobs:
-  env:
-    PYTHON_VERSION: "3.11"
-    PIP_CACHE_ID: "cp-311"
 
+env:
+  PYTHON_VERSION: "3.11"
+  PIP_CACHE_ID: "cp-311"
+
+
+jobs:
   install-deps:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
       - uses: actions/setup-python@v4
-        id: ${{ env.PIP_CACHE_ID }}
+        id: ${PIP_CACHE_ID}
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: ${PYTHON_VERSION}
           cache: "pip"
           cache-dependency-path: |
             **/requirements*.txt
       - run: |
-          echo "Cache hit: ${{ steps.$PIP_CACHE_ID.outputs.cache-hit }}"
+          echo "Cache hit: ${{ steps.${PIP_CACHE_ID}.outputs.cache-hit }}"
 
       - name: Install the dependencies
         run: |
