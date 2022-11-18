@@ -20,12 +20,12 @@ env:
   TIMEOUT: 10
 
 jobs:
+  install-deps:
+    uses: rednafi/cronies/.github/workflows/dep-installer.yml@main
+
   purge-forks:
     runs-on: ubuntu-latest
     steps:
-      - name: Install Python dependencies
-        uses: rednafi/cronies/.github/workflows/dep-installer.yml@main
-
       - name: Check linter
         run: |
           echo "Checking linter conformity..."
