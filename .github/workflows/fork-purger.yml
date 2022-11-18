@@ -1,6 +1,7 @@
 # Purge all the forks that weren't updated in the last 60 days.
 name: Purge outdated forks
 
+
 on:
   push:
 
@@ -14,11 +15,12 @@ concurrency:
   group: ${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+
 env:
   GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Provided by GitHub Actions.
   GITHUB_USERNAME: rednafi
   TIMEOUT: 10
-  PYTHON_VERSION: {{ env.PYTHON_VERSION }}
+
 
 jobs:
   set-constants:
@@ -29,13 +31,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-python@v4
         id: cp311
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: "${{ env.PYTHON_VERSION }}"
           cache: "pip"
           cache-dependency-path: |
             **/requirements*.txt
+            
       - run: |
           echo "Cache hit: ${{ steps.cp311.outputs.cache-hit }}"
 
