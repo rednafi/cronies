@@ -14,13 +14,14 @@ To test the script locally, perform the following steps:
 """
 
 from __future__ import annotations
-import httpx
-import os
-import asyncio
-import logging
-from contextlib import AsyncExitStack
-import datetime
 
+import asyncio
+import datetime
+import logging
+import os
+from contextlib import AsyncExitStack
+
+import httpx
 
 # Get the GitHub API token from the environment.
 GITHUB_API_TOKEN = os.environ.get("GITHUB_API_TOKEN")

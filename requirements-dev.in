@@ -1,7 +1,6 @@
 # For linting.
 black
-flake8
-isort
+ruff
 mypy
 
 # For dep management.
