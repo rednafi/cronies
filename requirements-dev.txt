@@ -43,7 +43,7 @@ pytest==7.2.1
     #   pytest-asyncio
 pytest-asyncio==0.20.3
     # via -r requirements-dev.in
-ruff==0.0.243
+ruff==0.0.244
     # via -r requirements-dev.in
 typing-extensions==4.4.0
     # via mypy
