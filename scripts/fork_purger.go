@@ -23,7 +23,7 @@ import (
 
 const (
 	timeout   = 1 * time.Second
-	olderThan = 1 * time.Second
+	olderThan = 24 * 60 * time.Hour
 	perPage   = 100
 )
 
