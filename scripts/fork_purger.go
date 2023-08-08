@@ -44,14 +44,6 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), timeout)
 	defer cancel()
 
-	// Timeout after 10 minutes
-	go func() {
-		<-ctx.Done()
-		if ctx.Err() == context.DeadlineExceeded {
-			log.Fatal("timed out")
-		}
-	}()
-
 	// Authenticate client
 	client := auth(ctx, githubAPIToken)
 
