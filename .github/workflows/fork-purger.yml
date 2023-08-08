@@ -17,11 +17,11 @@ permissions: write-all
 
 env:
   # Globally set in the repo settings.
-  GITHUB_API_TOKEN: ${{ secrets.GH_TOKEN }} # Implicitly used by the script.
+  GH_TOKEN: ${{ secrets.GH_TOKEN }} # Implicitly used by the script.
   GO_VERSION: "1.21"
 
   # Local env vars.
-  GITHUB_USERNAME: rednafi
+  GH_USERNAME: rednafi
   TIMEOUT: 10
 
 jobs:
