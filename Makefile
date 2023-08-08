@@ -1,14 +1,8 @@
-.PHONY: build
-	@go build .
-
 .PHONY: test
+test:
 	@go test -v ./...
 
-.PHONY: run
-	@go run .
-
-.PHONY: clean
-	@rm -f $(BINARY_NAME)
 
 .PHONY: lint
+lint:
 	@golangci-lint run

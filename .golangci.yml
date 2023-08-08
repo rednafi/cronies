@@ -1,0 +1,12 @@
+linters:
+  enable:
+    - gofmt
+    - gofix
+    - govet
+
+linters-settings:
+  gofmt:
+    simplify: true
+    goimports: true
+    # Also check diffs? Set to true to check diffs.
+    diff: true
