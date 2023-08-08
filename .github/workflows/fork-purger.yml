@@ -12,6 +12,14 @@ concurrency:
   group: ${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+# Grant permissions to delete forks.
+permissions:
+  contents: write
+
+  permissions:
+    contents: write
+    delete: write
+
 env:
   # Globally set in the repo settings.
   GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Implicitly used by the script.
