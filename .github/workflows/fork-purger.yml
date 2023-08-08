@@ -13,12 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 # Grant permissions to delete forks.
-permissions:
-  contents: write
-
-  permissions:
-    contents: write
-    delete: write
+permissions: write-all
 
 env:
   # Globally set in the repo settings.
