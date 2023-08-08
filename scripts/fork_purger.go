@@ -4,8 +4,8 @@ Script to delete all forked repos older than 60 days. To test it locally:
 - Ensure you have go 1.21+ installed
 - Install the dependencies with `go get ./scripts/...`
 - The following env vars are set:
-	- GITHUB_API_TOKEN: a personal access token with repo delete access
-	- GITHUB_USERNAME: the username of the account to delete forked repos from
+	- GH_TOKEN: a personal access token with repo delete access
+	- GH_USERNAME: the username of the account to delete forked repos from
 - Run `go run scripts/fork_purger.go`
 */
 
@@ -28,14 +28,14 @@ const (
 )
 
 var (
-	githubAPIToken = os.Getenv("GITHUB_API_TOKEN")
-	githubUsername = os.Getenv("GITHUB_USERNAME")
+	githubAPIToken = os.Getenv("GH_TOKEN")
+	githubUsername = os.Getenv("GH_USERNAME")
 )
 
 func init() {
 	// Validate required env vars
 	if githubAPIToken == "" || githubUsername == "" {
-		log.Fatal("GITHUB_API_TOKEN and GITHUB_USERNAME must be set")
+		log.Fatal("GH_TOKEN and GH_USERNAME must be set")
 	}
 }
 
