@@ -1,7 +1,6 @@
 linters:
   enable:
     - gofmt
-    - gofix
     - govet
 
 linters-settings:
