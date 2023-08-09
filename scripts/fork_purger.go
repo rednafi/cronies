@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	timeout   = 1 * time.Second
+	timeout   = 10 * time.Minute
 	olderThan = 24 * 60 * time.Hour
 	perPage   = 100
 )
@@ -37,38 +37,6 @@ func init() {
 	if githubAPIToken == "" || githubUsername == "" {
 		log.Fatal("GH_TOKEN and GH_USERNAME must be set")
 	}
-}
-
-func main() {
-	// Create context with timeout
-	ctx, cancel := context.WithTimeout(context.Background(), timeout)
-	defer cancel()
-
-	// Authenticate client
-	client := auth(ctx, githubAPIToken)
-
-	// Get forked repos older than threshold
-	repos, err := getForkedRepos(ctx, client, githubUsername, olderThan)
-	if err != nil {
-		log.Fatalf("could not get forked repos: %v", err)
-	}
-
-	// Log if no repos to delete
-	if len(repos) == 0 {
-		log.Println("no forked repos to delete")
-		return
-	}
-
-	// Delete identified repos
-	if err := deleteForkedRepos(ctx, client, repos); err != nil {
-		log.Fatalf("could not delete repos: %v", err)
-	}
-
-	// Log results
-	log.Printf(
-		"deleted %d forked repos that are older than %d\n",
-		len(repos), olderThan/(24*time.Hour),
-	)
 }
 
 // auth creates an authenticated client
@@ -128,4 +96,36 @@ func deleteForkedRepos(
 		}
 	}
 	return nil
+}
+
+func main() {
+	// Create context with timeout
+	ctx, cancel := context.WithTimeout(context.Background(), timeout)
+	defer cancel()
+
+	// Authenticate client
+	client := auth(ctx, githubAPIToken)
+
+	// Get forked repos older than threshold
+	repos, err := getForkedRepos(ctx, client, githubUsername, olderThan)
+	if err != nil {
+		log.Fatalf("could not get forked repos: %v", err)
+	}
+
+	// Log if no repos to delete
+	if len(repos) == 0 {
+		log.Println("no forked repos to delete")
+		return
+	}
+
+	// Delete identified repos
+	if err := deleteForkedRepos(ctx, client, repos); err != nil {
+		log.Fatalf("could not delete repos: %v", err)
+	}
+
+	// Log results
+	log.Printf(
+		"deleted %d forked repos that are older than %d\n",
+		len(repos), olderThan/(24*time.Hour),
+	)
 }
