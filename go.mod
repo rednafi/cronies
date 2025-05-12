@@ -1,10 +1,10 @@
 module cronies
 
-go 1.20
+go 1.23.0
 
 require (
 	github.com/google/go-github/v53 v53.2.0
-	golang.org/x/oauth2 v0.29.0
+	golang.org/x/oauth2 v0.30.0
 )
 
 require (
